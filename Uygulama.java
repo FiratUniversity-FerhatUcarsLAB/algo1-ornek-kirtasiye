@@ -1,20 +1,18 @@
 import java.util.Scanner;
 
 /*
- * Kampüs Kırtasiyesi · Örnek portfolyo, KT1 sürümü
+ * Kampüs Kırtasiyesi · Örnek portfolyo, 5. hafta sürümü (KT1 şartlarını sağlar)
  * Ders: YMT1101 Algoritma ve Programlama I
  *
  * Bu uygulama derste birlikte büyütülen ÖRNEK projedir; konu havuzunda yoktur.
- * KT1'de istenen her şey burada: Scanner ile girdi, en az bir if/else,
- * ayırt edici kuralın en basit hali ve 0 ile çıkış.
- *
- * Ayırt edici kural (örnek): 10 ve üzeri adette yüzde 10 indirim.
+ * Bu haftaki adım: ürün seçimi if/else merdiveninden switch'e taşındı.
+ * Ayırt edici kural (örnek, kural 7 "Kullanıcı türü"): öğrenci kartı gösterene yüzde 10 indirim.
+ * Menüde 0 her zaman çıkıştır; ana sınıf her zaman Uygulama'dır.
  */
 public class Uygulama {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // Şimdilik üç ürün ve fiyatları; diziler gelince (10. hafta) bir listeye taşınacak.
         final double KALEM = 15.0;
         final double DEFTER = 60.0;
         final double CIKTI = 2.5;   // sayfa başına
@@ -27,32 +25,46 @@ public class Uygulama {
         System.out.print("Seciminiz: ");
         int secim = input.nextInt();
 
-        if (secim == 0) {
-            System.out.println("Iyi gunler!");
-        } else if (secim < 1 || secim > 3) {
-            System.out.println("Gecersiz secim.");
-        } else {
+        double birimFiyat = 0;
+        String urun = "";
+
+        // Bu haftanın adımı: aynı karar, switch ile. Her case'in sonunda break var;
+        // break olmazsa akış bir alttaki case'e "düşer" (fall-through).
+        switch (secim) {
+            case 1:
+                urun = "Kalem";
+                birimFiyat = KALEM;
+                break;
+            case 2:
+                urun = "Defter";
+                birimFiyat = DEFTER;
+                break;
+            case 3:
+                urun = "Cikti";
+                birimFiyat = CIKTI;
+                break;
+            case 0:
+                System.out.println("Iyi gunler!");
+                break;
+            default:
+                System.out.println("Gecersiz secim.");
+        }
+
+        if (secim >= 1 && secim <= 3) {
             System.out.print("Adet: ");
             int adet = input.nextInt();
-
-            double birimFiyat;
-            if (secim == 1) {
-                birimFiyat = KALEM;
-            } else if (secim == 2) {
-                birimFiyat = DEFTER;
-            } else {
-                birimFiyat = CIKTI;
-            }
+            System.out.print("Ogrenci karti var mi (e/h): ");
+            char kart = input.next().charAt(0);
 
             double tutar = birimFiyat * adet;
 
-            // Ayırt edici kural: 10 ve üzeri adette yüzde 10 indirim
-            if (adet >= 10) {
+            // Ayırt edici kural: kullanıcı türü. Öğrenci kartı gösterene yüzde 10 indirim.
+            if (kart == 'e') {
                 tutar = tutar * 0.90;
-                System.out.println("Toplu alim indirimi uygulandi (%10).");
+                System.out.println("Ogrenci indirimi uygulandi (%10).");
             }
 
-            System.out.printf("Toplam: %.2f TL%n", tutar);
+            System.out.printf("%s x %d = %.2f TL%n", urun, adet, tutar);
         }
 
         input.close();

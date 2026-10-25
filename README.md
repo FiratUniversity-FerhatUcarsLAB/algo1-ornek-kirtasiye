@@ -16,8 +16,8 @@ o adımın nasıl yapıldığını derste birlikte görürüz.
 
 | KT | Son teslim | Bu sürümde ne var | Durum |
 |---|---|---|---|
-| KT1 | 6 Kasım 2026 Cuma 23.59 | Scanner ile girdi, en az bir if/else, ayırt edici kuralın en basit hali, 0 ile çıkış | Hazır; 5. haftada seçim switch'e taşındı |
-| KT2 | 27 Kasım 2026 Cuma 23.59 | Gözcü değerle biten menü döngüsü, girdi doğrulama döngüsü | 5-7. haftalarda eklenecek |
+| KT1 | 6 Kasım 2026 Cuma 23.59 | Scanner ile girdi, en az bir if/else, ayırt edici kuralın en basit hali, 0 ile çıkış | Hazır; 5. haftada seçim switch'e, 6. haftada menü döngüye taşındı |
+| KT2 | 27 Kasım 2026 Cuma 23.59 | Gözcü değerle biten menü döngüsü, girdi doğrulama döngüsü | 6. haftada eklendi: do-while menü, adet doğrulama döngüsü, günlük toplam |
 | KT3 | 11 Aralık 2026 Cuma 23.59 | Metotlar, dizi alıp tek değer döndüren metot, girdi doğrulayan metot; veriler dizide | 8-11. haftalarda eklenecek |
 | KT4 | 25 Aralık 2026 Cuma 23.59 | Çalışan son sürüm, README tam, AI-BEYANI.md dolu, üç dil karşılaştırması | 14. haftada |
 
@@ -34,7 +34,7 @@ Ana sınıf her zaman `Uygulama`, menüde `0` her zaman çıkıştır. Otomatik 
 
 - Değişkenler ve tipler: `int secim`, `int adet`, `double tutar`, `final double` sabitler
 - Karar yapıları: `switch` (ürün seçimi), `if` (indirim kuralı), `&&` (seçim aralığı kontrolü)
-- Döngüler: henüz yok (KT2)
+- Döngüler: `do-while` (menü, 0 gözcü değeri; adet doğrulama), sayaç ve toplam
 - Metotlar: henüz yok (KT3)
 - Diziler: henüz yok (KT3)
 
